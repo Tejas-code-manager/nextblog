@@ -12,7 +12,7 @@ import axios from 'axios';
 
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '/about', current: false },
+    { name: 'Team', href: 'about', current: false },
     { name: 'Projects', href: '#', current: false },
     { name: 'Calendar', href: '#', current: false },
 ]
