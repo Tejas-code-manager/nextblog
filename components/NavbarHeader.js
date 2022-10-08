@@ -8,6 +8,7 @@ import Head from 'next/head'
 import { Alert, Modal, Button, Navbar, Dropdown, Avatar, Flowbite, DarkThemeToggle } from "flowbite-react";
 import styles from '../styles/Home.module.css'
 import { useEffect, useState } from 'react'
+import { useSelector } from "react-redux"
 import axios from 'axios';
 
 const navigation = [
@@ -22,6 +23,7 @@ function classNames(...classes) {
 }
 
 const NavbarHeader = (props) => {
+    const userCounter = useSelector((state) => state.value)
     return (
         <div>
             <Disclosure as="nav" className="">
@@ -143,7 +145,7 @@ const NavbarHeader = (props) => {
                                                             href="#"
                                                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                         >
-                                                            Settings
+                                                            Settings : {userCounter}
                                                         </a>
                                                     )}
                                                 </Menu.Item>

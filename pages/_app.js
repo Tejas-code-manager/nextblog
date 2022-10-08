@@ -1,6 +1,16 @@
 import NavbarHeader from '../components/NavbarHeader';
 import NextNProgress from "nextjs-progressbar";
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+
+import userReducer from '../features/user'
 import '../styles/globals.css'
+
+const store = configureStore({
+  reducer: {
+    userReducer
+  }
+})
 
 function MyApp({ Component, pageProps }) {
   return <>
@@ -12,7 +22,9 @@ function MyApp({ Component, pageProps }) {
       showOnShallow={true}
       options={{ easing: "ease", speed: 500 }}
     />
-    <Component {...pageProps} />
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
   </>
 }
 
