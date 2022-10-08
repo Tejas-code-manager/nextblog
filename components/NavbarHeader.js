@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
+    { name: 'Dashboard', href: '/', current: true },
     { name: 'Team', href: 'about', current: false },
     { name: 'Projects', href: '#', current: false },
     { name: 'Calendar', href: '#', current: false },
@@ -24,7 +24,7 @@ function classNames(...classes) {
 const NavbarHeader = (props) => {
     return (
         <div>
-            <Disclosure as="nav" className={styles.glassy}>
+            <Disclosure as="nav" className="">
                 {({ open }) => (
                     <>
                         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -61,17 +61,18 @@ const NavbarHeader = (props) => {
                                     <div className="hidden sm:ml-6 sm:block">
                                         <div className="flex space-x-4">
                                             {navigation.map((item) => (
-                                                <a
+                                                <Link
                                                     key={item.name}
                                                     href={item.href}
-                                                    className={classNames(
+                                                >
+                                                    <a className={classNames(
                                                         item.current ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-400 hover:text-white',
                                                         'px-3 py-2 rounded-md text-sm font-medium'
                                                     )}
-                                                    aria-current={item.current ? 'page' : undefined}
-                                                >
-                                                    {item.name}
-                                                </a>
+                                                        aria-current={item.current ? 'page' : undefined}>
+                                                        {item.name}
+                                                    </a>
+                                                </Link>
                                             ))}
                                         </div>
                                     </div>
