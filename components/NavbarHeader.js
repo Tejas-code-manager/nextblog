@@ -23,9 +23,13 @@ function classNames(...classes) {
 }
 
 const NavbarHeader = (props) => {
-    const userCounter = useSelector((state) => state.value)
+    const userCounter = useSelector((state) => state.user.value)
     return (
         <div>
+            <Head>
+                <title>{props.pageTitle}</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
             <Disclosure as="nav" className="">
                 {({ open }) => (
                     <>

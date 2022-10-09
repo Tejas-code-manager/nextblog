@@ -34,7 +34,7 @@ export default function Home() {
 
         <div>
 
-            <NavbarHeader routed={"about"}></NavbarHeader>
+            <NavbarHeader pageTitle={"NextBlog - About"}></NavbarHeader>
             <main className="grid h-screen place-items-center">
                 <div>
                     <h1>This about page!</h1>

@@ -34,7 +34,7 @@ export default function Home() {
 
     <div>
 
-      <NavbarHeader name={Val}></NavbarHeader>
+      <NavbarHeader pageTitle={"NextBlog - Home"}></NavbarHeader>
       <main className="grid h-screen place-items-center">
         {posts.map((postData) => (
 

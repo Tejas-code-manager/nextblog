@@ -1,23 +1,50 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux';
+import { register } from '../../features/user'
 
 
 function signup() {
+    const dispatch = useDispatch();
+    async function signupUser(event) {
 
-    function signupUser() {
+        event.preventDefault()
+
+        // Get data from the form.
+        const data = {
+            name: event.target.name.value,
+            email: event.target.email.value,
+            username: event.target.username.value,
+            password: event.target.password.value,
+        }
+        // console.log(data)
+        // const JSONdata = JSON.stringify(data)
+        // console.log(JSONdata)
+        const datareturned = dispatch(register(data))
+        // console.log(datareturned)
 
     }
 
     return (
+
         <div>
+
             <div className="mt-14 w-full max-w-md p-6 m-auto mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
                 <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">Create account</h1>
 
-                <form className="mt-6">
+                <form className="mt-6" onSubmit={signupUser}>
                     <div>
+                        <label htmlFor="name" className="block text-sm text-gray-800 dark:text-gray-200">Name</label>
+                        <input type="text" id="name" name="name" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    </div>
+                    <div className="mt-4">
+                        <label htmlFor="email" className="block text-sm text-gray-800 dark:text-gray-200">Email</label>
+                        <input type="email" id="email" name="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    </div>
+                    <div className="mt-4">
                         <label htmlFor="username" className="block text-sm text-gray-800 dark:text-gray-200">Username</label>
-                        <input type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        <input type="text" id="username" name="username" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
 
                     <div className="mt-4">
@@ -26,11 +53,11 @@ function signup() {
 
                         </div>
 
-                        <input type="password" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        <input type="password" id="password" name="password" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
 
                     <div className="mt-6">
-                        <button onClick={signupUser} className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        <button type="submit" className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
                             Signup
                         </button>
                     </div>

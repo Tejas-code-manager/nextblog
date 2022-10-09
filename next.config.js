@@ -6,6 +6,9 @@ const nextConfig = {
     loader: 'imgix',
     path: '/public/',
   },
+  env: {
+    API_URL: "http://localhost:4003/",
+  },
 }
 
 module.exports = nextConfig
