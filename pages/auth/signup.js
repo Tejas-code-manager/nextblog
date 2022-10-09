@@ -18,11 +18,7 @@ function signup() {
             username: event.target.username.value,
             password: event.target.password.value,
         }
-        // console.log(data)
-        // const JSONdata = JSON.stringify(data)
-        // console.log(JSONdata)
-        const datareturned = dispatch(register(data))
-        // console.log(datareturned)
+        dispatch(register(data))
 
     }
 
