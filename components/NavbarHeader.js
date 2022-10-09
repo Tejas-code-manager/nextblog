@@ -1,5 +1,5 @@
-// import React from 'react'
-import { Fragment } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
+// import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
@@ -7,15 +7,16 @@ import Link from 'next/link'
 import Head from 'next/head'
 import { Alert, Modal, Button, Navbar, Dropdown, Avatar, Flowbite, DarkThemeToggle } from "flowbite-react";
 import styles from '../styles/Home.module.css'
-import { useEffect, useState } from 'react'
-import { useSelector } from "react-redux"
+// import  from 'react'
+import { useSelector, useDispatch } from "react-redux"
+import { getUserData } from '../features/user'
 import axios from 'axios';
 
 const navigation = [
     { name: 'Dashboard', href: '/', current: true },
     { name: 'Team', href: 'about', current: false },
     { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
+    { name: 'Logout', href: '/auth/login', current: false },
 ]
 
 function classNames(...classes) {
@@ -23,12 +24,18 @@ function classNames(...classes) {
 }
 
 const NavbarHeader = (props) => {
-    const userCounter = useSelector((state) => state.user.value)
+    const dispatch = useDispatch();
+    dispatch(getUserData({ name: "Tejas" }))
+    const userprofiles = useSelector((state) => state.user.value)
+
+    console.log(userprofiles)
     return (
         <div>
             <Head>
                 <title>{props.pageTitle}</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css" />
+                <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-fr</link>ee/css/all.min.css" />
             </Head>
             <Disclosure as="nav" className="">
                 {({ open }) => (
@@ -129,8 +136,20 @@ const NavbarHeader = (props) => {
                                                             href="#"
                                                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                         >
-                                                            {props.name}
+
                                                         </a>
+                                                    )}
+                                                </Menu.Item>
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <Link href="/@payalkuyate">
+                                                            <a
+
+                                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                            >
+
+                                                            </a>
+                                                        </Link>
                                                     )}
                                                 </Menu.Item>
                                                 <Menu.Item>
@@ -139,17 +158,7 @@ const NavbarHeader = (props) => {
                                                             href="#"
                                                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                         >
-                                                            Profile
-                                                        </a>
-                                                    )}
-                                                </Menu.Item>
-                                                <Menu.Item>
-                                                    {({ active }) => (
-                                                        <a
-                                                            href="#"
-                                                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                        >
-                                                            Settings : {userCounter}
+                                                            Settings
                                                         </a>
                                                     )}
                                                 </Menu.Item>

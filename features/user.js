@@ -3,14 +3,9 @@ import axios from "axios"
 import toast, { Toaster } from 'react-hot-toast';
 import * as ls from "local-storage";
 
-const initialState = {
-    value: {
-        token: ls.get("logToken"),
-    }
-}
 const userSlice = createSlice({
     name: "userSlice",
-    initialState,
+    initialState: { value: {} },
     reducers: {
         register: async (state, action) => {
 
@@ -54,12 +49,34 @@ const userSlice = createSlice({
             }
             let tokenData = response.data.token;
             localStorage.setItem("logToken", tokenData)
-            state.value.token = localStorage.getItem("logToken")
-            // console.log(state.value.token)
+
+        },
+        getUserData: async (state, action) => {
+            // console.log(action)
+            let transferData = action.payload.name;
+            const response = await axios.post(process.env.API_URL + "userProfile", {
+                //...data
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': localStorage.getItem("logToken"),
+                }
+            })
+            const result = response.data;
+            if (response.data.status == 1) {
+                let userDatas = response.data.data;
+                // console.log(userDatas.data)
+                state.value = userDatas
+                // console.log(state.value)
+                toast.success(response.data.message)
+            } else {
+                state.value = {}
+                toast.error(response.data.message)
+            }
 
         },
     }
 })
 
-export const { register, loginUser } = userSlice.actions
+export const { register, loginUser, getUserData } = userSlice.actions
 export default userSlice.reducer

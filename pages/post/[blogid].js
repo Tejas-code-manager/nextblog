@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 import NavbarHeader from '../../components/NavbarHeader';
 
+
 function SinglePost() {
+    let userToken = useSelector((state) => state.user.token)
+    useEffect(() => {
+
+    });
+
+
     const router = useRouter()
     const { blogid } = router.query
     return (
