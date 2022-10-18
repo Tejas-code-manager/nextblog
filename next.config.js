@@ -7,7 +7,7 @@ const nextConfig = {
     path: '/public/',
   },
   env: {
-    API_URL: "http://localhost:4003/",
+    API_URL: "http://localhost:4001/",
   },
 }
 

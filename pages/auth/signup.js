@@ -7,7 +7,7 @@ import { register } from '../../features/user'
 
 function signup() {
     const dispatch = useDispatch();
-    async function signupUser(event) {
+   const signupUser = async (event) => {
 
         event.preventDefault()
 
@@ -18,9 +18,12 @@ function signup() {
             username: event.target.username.value,
             password: event.target.password.value,
         }
+
         dispatch(register(data))
 
     }
+
+
 
     return (
 
@@ -53,7 +56,7 @@ function signup() {
                     </div>
 
                     <div className="mt-6">
-                        <button type="submit" className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
                             Signup
                         </button>
                     </div>
