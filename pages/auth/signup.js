@@ -19,10 +19,10 @@ function signup() {
             password: event.target.password.value,
         }
 
-        dispatch(register(data))
+
 
     }
-
+   dispatch(register())
 
 
     return (

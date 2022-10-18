@@ -20,9 +20,10 @@ function login() {
             password: event.target.password.value,
         }
 
-        dispatch(loginUser(data))
+
 
     }
+    dispatch(loginUser())
 
     return (
         <div>
