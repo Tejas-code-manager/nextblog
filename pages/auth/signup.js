@@ -6,7 +6,7 @@ import { register } from '../../features/user'
 
 
 function signup() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
    const signupUser = async (event) => {
 
         event.preventDefault()
@@ -19,10 +19,10 @@ function signup() {
             password: event.target.password.value,
         }
 
-        dispatch(register(data))
+
 
     }
-
+   // dispatch(register())
 
 
     return (

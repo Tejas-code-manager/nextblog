@@ -1,10 +1,11 @@
 import React from 'react'
 import NavbarHeader from '../components/NavbarHeader';
 import { useRouter } from 'next/router'
+// const router = useRouter()
 function userProfile() {
 
-    const router = useRouter()
-    const { username } = router.query
+
+    const username = "payalkuyate";
     return (
         <div>
 

@@ -7,7 +7,7 @@ import { loginUser } from '../../features/user';
 
 function login() {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const Loginer = async (event) => {
 
         event.preventDefault();
@@ -20,9 +20,10 @@ function login() {
             password: event.target.password.value,
         }
 
-        dispatch(loginUser(data))
+
 
     }
+    // dispatch(loginUser())
 
     return (
         <div>
