@@ -8,15 +8,18 @@ import { loginUser } from '../../features/user';
 function login() {
 
     const dispatch = useDispatch();
-    async function Loginer(event) {
+    const Loginer = async (event) => {
 
-        event.preventDefault()
+        event.preventDefault();
+
+        console.log(event)
 
         // Get data from the form.
         const data = {
             email: event.target.email.value,
             password: event.target.password.value,
         }
+
         dispatch(loginUser(data))
 
     }

@@ -25,9 +25,12 @@ function classNames(...classes) {
 
 const NavbarHeader = (props) => {
     const dispatch = useDispatch();
-    dispatch(getUserData({ name: "Tejas" }))
+    // dispatch(getUserData({ name: "Tejas" }))
+    useEffect(()=>{
+      dispatch(getUserData())
+    },[])
     const userprofiles = useSelector((state) => state.user.value)
-
+    //
     console.log(userprofiles)
     return (
         <div>
